@@ -1,0 +1,149 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Test task from xSolla to implement the REST API calculator.",
+    "version": "1.0.0",
+    "title": "REST API Calculator",
+    "contact": {
+      "name": "Semen Skobelkin",
+      "email": "skobelkinsa@yadn"
+    }
+  },
+  "host": "127.0.1.1:8000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/calc/": {
+      "get": {
+        "tags": [
+          "Calc"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "method",
+            "description": "method calculate",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "addition",
+                "subtraction",
+                "division",
+                "multiplication"
+              ]
+            }
+          },
+          {
+            "in": "query",
+            "name": "items[]",
+            "description": "operands calculate",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minItems": 2,
+                "maxItems": 3
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "result expression",
+            "schema": {
+              "$ref": "#/definitions/result_calc"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Calc"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "addition",
+                      "subtraction",
+                      "division",
+                      "multiplication"
+                    ]
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minItems": 2,
+                      "maxItems": 3
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "result expression",
+            "schema": {
+              "$ref": "#/definitions/result_calc"
+            }
+          }
+        }
+      }
+
+    }
+  },
+  "definitions": {
+    "result_calc": {
+      "type": "object",
+      "properties": {
+        "expression": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string"
+        }
+      }
+    },
+    "calc": {
+      "type": "object",
+      "required": [
+        "method",
+        "operands"
+      ],
+      "properties": {
+        "method": {
+          "type": "string",
+          "default": "addition",
+          "enum": [
+            "addition",
+            "subtraction",
+            "division",
+            "multiplication"
+          ]
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": "123",
+            "minItems": 2,
+            "maxItems": 3
+          }
+        }
+      }
+    }
+  }
+}

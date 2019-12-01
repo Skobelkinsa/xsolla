@@ -25,10 +25,7 @@ class СCalcController extends AbstractController
      */
     public function post_calc(Request $request)
     {
-        $arResult = self::processing_method_calc(
-            $request->request->get('method'),
-            $request->request->get('items')
-        );
+        $arResult = self::processing_method_calc($request->request->get('method'),$request->request->get('items'));
         return $this->json($arResult);
     }
 
@@ -42,6 +39,7 @@ class СCalcController extends AbstractController
         if(array_search($method, $arMethod)!==FALSE){
             $is_numb = true;
             $is_valid = false;
+
             foreach ($operands as $operand){
                 if(!is_numeric($operand)){
                     $is_numb = false;
@@ -85,6 +83,9 @@ class СCalcController extends AbstractController
      */
     public function processing_method_calc($method = "", $operands = array())
     {
+        if(!is_array($operands)){
+            $operands = explode(',', $operands);
+        }
         $arResult = self::validator_operands_calc($method, $operands);
         if($arResult['status']=='success'){
             switch ($method){
