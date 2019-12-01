@@ -83,7 +83,7 @@
                   "items": {
                     "type": "array",
                     "items": {
-                      "type": "string",
+                      "type": "integer",
                       "minItems": 2,
                       "maxItems": 3
                     }
@@ -117,33 +117,5 @@
         }
       }
     },
-    "calc": {
-      "type": "object",
-      "required": [
-        "method",
-        "operands"
-      ],
-      "properties": {
-        "method": {
-          "type": "string",
-          "default": "addition",
-          "enum": [
-            "addition",
-            "subtraction",
-            "division",
-            "multiplication"
-          ]
-        },
-        "items": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "default": "123",
-            "minItems": 2,
-            "maxItems": 3
-          }
-        }
-      }
-    }
   }
 }

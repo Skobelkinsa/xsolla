@@ -25,7 +25,10 @@ class СCalcController extends AbstractController
      */
     public function post_calc(Request $request)
     {
-        $arResult = self::processing_method_calc($request->request->get('method'),$request->request->get('items'));
+        $arResult = self::processing_method_calc(
+            $request->request->get('method'),
+            $request->request->get('items')
+        );
         return $this->json($arResult);
     }
 
