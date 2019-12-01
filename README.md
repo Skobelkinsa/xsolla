@@ -2,6 +2,12 @@
 
 Тестовое задание по реализации простого Rest API калькулятора
 
+**Docker**
+
+Для установки из докера выполните команду
+```sh
+$ docker pull skobelkinsa/xsolla_test
+```
 **Установка:**
 
  - Клонируем git [проект](https://github.com/Skobelkinsa/xsolla)
@@ -38,7 +44,7 @@ Base dir: [/calc/](http://127.0.0.1:8000/calc/)
 
 **PHP-UNIT Tests**
 
-Тесты расположены в папке app/restcalc/tests. Т.к. вся логика находится в 1 контроллере по этому достаточно выполнить
+Тесты расположены в папке tests/. Т.к. вся логика находится в 1 контроллере по этому достаточно выполнить
 ```sh
 $ php bin/phpunit tests/Controller/СCalcController.php
 ```
