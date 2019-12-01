@@ -33,11 +33,11 @@ class СCalcController extends AbstractController
     }
 
     /**
-     * @param $method
-     * @param $operands
-     * @return array|bool
+     * @param string $method
+     * @param array $operands
+     * @return array
      */
-    public function validator_operands_calc($method, $operands){
+    public function validator_operands_calc($method = "", $operands = array()){
         $arMethod = array('addition', 'subtraction', 'multiplication', 'division');
         if(array_search($method, $arMethod)!==FALSE){
             $is_numb = true;
@@ -49,6 +49,7 @@ class СCalcController extends AbstractController
                     break;
                 }
             }
+
             switch ($method){
                 case 'addition':
                     if(count($operands) >=2 && count($operands) <=3)
