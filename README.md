@@ -6,7 +6,7 @@
 
  - Клонируем git [проект](https://github.com/Skobelkinsa/xsolla)
 ```sh
-$ git clone https://github.com/Skobelkinsa/xsolla.git
+$ git clone https://github.com/Skobelkinsa/xsolla.git; cd xsolla;
 ```
  - Собираем через Composer
 ```sh
@@ -14,7 +14,7 @@ $ composer install
 ```
  - Запускаем локальный сервер
 ```sh
-$ cd app/restcalc; php bin/console server:start
+$ php bin/console server:start
 ```
 
 **OpenAPI (Swagger)**
@@ -29,7 +29,7 @@ Base dir: [/calc/](http://127.0.0.1:8000/calc/)
 Параметры запроса: 
 
  - **method** (string)
- параметр преднозначин для определения математической операции варианты: 
+ параметр предназначен для определения математической операции варианты: 
  **'addition'** - сложение 2ух/3ёх чисел (A+B, A+B+C), 
  **'subtraction'** - вычитание A-B, 
  **'multiplication'** - деление A/B, 
@@ -38,7 +38,7 @@ Base dir: [/calc/](http://127.0.0.1:8000/calc/)
 
 **PHP-UNIT Tests**
 
-Тесты расположены в папке app/restcalc/tests. Т.к. вся логика надохится в 1 контроллере по этому достаточно выполнить
+Тесты расположены в папке app/restcalc/tests. Т.к. вся логика находится в 1 контроллере по этому достаточно выполнить
 ```sh
 $ php bin/phpunit tests/Controller/СCalcController.php
 ```
